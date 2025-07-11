@@ -21,9 +21,13 @@ body{font-family:"Poppins",sans-serif;line-height:1.6;color:#2c3e50;background:#
 
 /* Mobile Critical */
 @media (max-width:767px){
-.nav-menu{position:fixed;left:-100%;top:70px;flex-direction:column;background:#fff;width:100%;text-align:center;transition:.3s;padding:2rem 0}
-.nav-toggle{display:flex;flex-direction:column;cursor:pointer}
-.bar{width:25px;height:3px;background:#2c3e50;margin:3px 0;transition:.3s}
+.nav-menu{position:fixed;left:-100%;top:70px;flex-direction:column;background:#fff;width:100%;text-align:center;transition:.3s;padding:2rem 0;z-index:1000;height:calc(100vh - 70px);overflow-y:auto}
+.nav-menu.active{left:0}
+.nav-toggle{display:flex !important;flex-direction:column;cursor:pointer;padding:8px;border-radius:4px;background:transparent;border:none;width:40px;height:40px;justify-content:center;align-items:center;z-index:1001;position:relative}
+.bar{width:25px;height:3px;background:#2c3e50;margin:3px 0;transition:.3s;border-radius:2px;display:block}
+.nav-toggle.active .bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle.active .bar:nth-child(2){opacity:0}
+.nav-toggle.active .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 .hero-container{grid-template-columns:1fr;text-align:center}
 .hero-title{font-size:2rem}
 }

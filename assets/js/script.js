@@ -1175,137 +1175,131 @@ function setupEventListeners() {
 // Mobile Menu Toggle Function - Enhanced and Fixed
 function setupMobileMenu() {
   try {
-    // Wait for elements to be ready
-    setTimeout(() => {
-      const navToggle = document.getElementById('nav-toggle')
-      const navMenu = document.getElementById('nav-menu')
+    // Use a more robust approach with multiple retries
+    let attempts = 0;
+    const maxAttempts = 5;
+    
+    function initializeMenuWithRetry() {
+      attempts++;
+      
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
       
       if (!navToggle || !navMenu) {
-        console.warn('Mobile menu elements not found, retrying...')
-        // Retry after another small delay
-        setTimeout(() => {
-          const retryToggle = document.getElementById('nav-toggle')
-          const retryMenu = document.getElementById('nav-menu')
-          if (retryToggle && retryMenu) {
-            initializeMobileMenu(retryToggle, retryMenu)
-          }
-        }, 500)
-        return
+        if (attempts < maxAttempts) {
+          console.warn(`Mobile menu elements not found, retrying... (${attempts}/${maxAttempts})`);
+          setTimeout(initializeMenuWithRetry, 200 * attempts);
+        } else {
+          console.error('Failed to initialize mobile menu after maximum attempts');
+        }
+        return;
       }
       
-      initializeMobileMenu(navToggle, navMenu)
-    }, 100)
+      console.log('Initializing mobile menu successfully');
+      initializeMobileMenu(navToggle, navMenu);
+    }
+    
+    // Start initialization
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeMenuWithRetry);
+    } else {
+      initializeMenuWithRetry();
+    }
     
   } catch (error) {
-    console.error('Error setting up mobile menu:', error)
+    console.error('Error setting up mobile menu:', error);
   }
 }
 
 // Initialize mobile menu functionality
 function initializeMobileMenu(navToggle, navMenu) {
   try {
+    console.log('Setting up mobile menu event listeners');
+    
     // Reset initial state
-    navToggle.setAttribute('aria-expanded', 'false')
-    navMenu.classList.remove('active')
-    navToggle.classList.remove('active')
-    document.body.style.overflow = ''
+    navToggle.setAttribute('aria-expanded', 'false');
+    navMenu.classList.remove('active');
+    navToggle.classList.remove('active');
+    document.body.style.overflow = '';
     
-    // Remove any existing event listeners
-    const newNavToggle = navToggle.cloneNode(true)
-    navToggle.parentNode.replaceChild(newNavToggle, navToggle)
-    
-    // Re-get the element reference after cloning
-    const freshNavToggle = document.getElementById('nav-toggle')
-    
-    // Toggle menu function
+    // Function to toggle menu
     function toggleMenu(e) {
       if (e) {
-        e.preventDefault()
-        e.stopPropagation()
+        e.preventDefault();
+        e.stopPropagation();
       }
       
-      const isActive = navMenu.classList.contains('active')
+      const isActive = navMenu.classList.contains('active');
+      console.log('Toggling menu, currently active:', isActive);
       
       if (isActive) {
         // Close menu
-        navMenu.classList.remove('active')
-        freshNavToggle.classList.remove('active')
-        freshNavToggle.setAttribute('aria-expanded', 'false')
-        document.body.style.overflow = ''
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        console.log('Menu closed');
       } else {
         // Open menu
-        navMenu.classList.add('active')
-        freshNavToggle.classList.add('active')
-        freshNavToggle.setAttribute('aria-expanded', 'true')
-        document.body.style.overflow = 'hidden'
+        navMenu.classList.add('active');
+        navToggle.classList.add('active');
+        navToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        console.log('Menu opened');
       }
     }
     
-    // Add click event listener
-    freshNavToggle.addEventListener('click', toggleMenu, { passive: false })
+    // Remove existing event listeners to prevent duplicates
+    navToggle.removeEventListener('click', toggleMenu);
+    navToggle.removeEventListener('touchstart', toggleMenu);
     
-    // Add touch event listener for mobile devices
-    freshNavToggle.addEventListener('touchstart', (e) => {
-      e.preventDefault()
-      toggleMenu(e)
-    }, { passive: false })
+    // Add event listeners
+    navToggle.addEventListener('click', toggleMenu, { passive: false });
+    navToggle.addEventListener('touchstart', toggleMenu, { passive: false });
     
-    // Handle keyboard events for accessibility
-    freshNavToggle.addEventListener('keydown', (e) => {
+    // Keyboard support
+    navToggle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault()
-        toggleMenu(e)
+        e.preventDefault();
+        toggleMenu(e);
       }
-    })
-    
-    // Close menu when clicking on nav links
-    const navLinks = document.querySelectorAll('.nav-link')
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active')
-        freshNavToggle.classList.remove('active')
-        freshNavToggle.setAttribute('aria-expanded', 'false')
-        document.body.style.overflow = ''
-      })
-    })
+      if (e.key === 'Escape') {
+        if (navMenu.classList.contains('active')) {
+          toggleMenu(e);
+        }
+      }
+    });
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!freshNavToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        if (navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active')
-          freshNavToggle.classList.remove('active')
-          freshNavToggle.setAttribute('aria-expanded', 'false')
-          document.body.style.overflow = ''
-        }
+      if (navMenu.classList.contains('active') && 
+          !navToggle.contains(e.target) && 
+          !navMenu.contains(e.target)) {
+        toggleMenu();
       }
-    })
+    });
     
-    // Close menu when pressing Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active')
-        freshNavToggle.classList.remove('active')
-        freshNavToggle.setAttribute('aria-expanded', 'false')
-        document.body.style.overflow = ''
-        freshNavToggle.focus()
-      }
-    })
-    
-    // Handle window resize - close menu if window becomes wide
+    // Close menu when window is resized to desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active')
-        freshNavToggle.classList.remove('active')
-        freshNavToggle.setAttribute('aria-expanded', 'false')
-        document.body.style.overflow = ''
+        toggleMenu();
       }
-    })
+    });
     
-    console.log('Mobile menu initialized successfully')
+    // Close menu when clicking nav links
+    const navLinks = navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          setTimeout(() => toggleMenu(), 100);
+        }
+      });
+    });
+    
+    console.log('Mobile menu initialized successfully');
     
   } catch (error) {
-    console.error('Error initializing mobile menu:', error)
+    console.error('Error initializing mobile menu:', error);
   }
 }
 

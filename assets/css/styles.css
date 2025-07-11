@@ -314,6 +314,10 @@ contact,
   z-index: 1001;
   background: transparent;
   border: none;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-toggle:hover {
@@ -2381,6 +2385,10 @@ contact,
     z-index: 1001 !important;
     background: transparent !important;
     border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   .nav-toggle:hover {
@@ -2402,7 +2410,6 @@ contact,
     display: block !important;
   }
 
-  /* Nav menu mobile styles */
   .nav-menu {
     position: fixed !important;
     left: -100% !important;
@@ -2440,7 +2447,6 @@ contact,
     background-color: rgba(52, 152, 219, 0.1) !important;
   }
 
-  /* Admin button styling for mobile */
   .nav-menu .nav-link.admin-login {
     background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
     color: white !important;
@@ -2453,156 +2459,47 @@ contact,
   .nav-menu .nav-link.admin-login:hover {
     background: linear-gradient(135deg, #c0392b, #e74c3c) !important;
     color: white !important;
+    transform: translateY(-2px) !important;
   }
 
   /* Hamburger animation */
+  .nav-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg) !important;
+  }
+
   .nav-toggle.active .bar:nth-child(2) {
     opacity: 0 !important;
   }
 
-  .nav-toggle.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg) !important;
-  }
-
   .nav-toggle.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg) !important;
+    transform: translateY(-8px) rotate(-45deg) !important;
   }
 }
 
-/* Specific breakpoint fixes */
-@media screen and (max-width: 480px) {
-  .nav-toggle {
-    display: flex !important;
-    padding: 6px !important;
-  }
-  
-  .bar {
-    width: 22px !important;
-    height: 2.5px !important;
-  }
-  
-  .nav-menu {
-    top: 65px !important;
-    height: calc(100vh - 65px) !important;
-    padding: 1.5rem 0 !important;
-  }
-}
-
+/* Specific fix for tablets in portrait mode */
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .nav-toggle {
     display: flex !important;
   }
-  
+}
+
+/* Specific fix for very small mobile devices */
+@media screen and (max-width: 480px) {
+  .nav-toggle {
+    display: flex !important;
+    width: 35px !important;
+    height: 35px !important;
+    padding: 6px !important;
+  }
+
+  .bar {
+    width: 20px !important;
+    height: 2px !important;
+    margin: 2px 0 !important;
+  }
+
   .nav-menu {
-    top: 70px !important;
-    height: calc(100vh - 70px) !important;
+    top: 60px !important;
+    height: calc(100vh - 60px) !important;
   }
-}
-
-/* Print media fixes */
-@media print {
-  .nav-toggle,
-  .modal,
-  .toast,
-  .compare-container {
-    display: none !important;
-  }
-  
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-  }
-  
-  .hero-container {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* High contrast mode fixes */
-@media (prefers-contrast: high) {
-  .product-card,
-  .featured-item,
-  .vendor-card,
-  .modal-content {
-    border: 2px solid currentColor !important;
-  }
-  
-  .nav-link:hover,
-  .filter-btn:hover,
-  .detail-btn:hover {
-    background-color: currentColor !important;
-    color: white !important;
-  }
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Focus management for accessibility */
-.modal:focus-within {
-  outline: none;
-}
-
-.modal-content:focus {
-  outline: 2px solid #3498db;
-  outline-offset: 2px;
-}
-
-/* Ensure all interactive elements have proper focus indicators */
-button:focus,
-input:focus,
-textarea:focus,
-select:focus,
-.nav-link:focus,
-.detail-btn:focus {
-  outline: 2px solid #3498db !important;
-  outline-offset: 2px !important;
-}
-
-/* Fix for long content in cards */
-.product-name,
-.vendor-name,
-.featured-item h3 {
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-}
-
-.product-description,
-.vendor-description,
-.featured-item p {
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  line-height: 1.5 !important;
-}
-
-/* Ensure proper spacing and alignment */
-.product-info,
-.vendor-info,
-.featured-item {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  height: 100% !important;
-  justify-content: space-between !important;
-}
-
-/* Final overflow safety net */
-* {
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-*:not(svg):not(svg *) {
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
 }
