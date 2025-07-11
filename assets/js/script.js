@@ -1155,8 +1155,7 @@ function setupEventListeners() {
   // Real-time validation for contact form
   setupRealTimeValidation()
 
-  // Enhanced mobile menu functionality
-  setupMobileMenu()
+  // Mobile menu already initialized in main DOMContentLoaded - no need to call again
 
   // Enhanced touch and swipe support for mobile
   setupTouchSupport()
@@ -1173,59 +1172,89 @@ function setupEventListeners() {
   checkHoverSupport()
 }
 
-// Mobile Menu Toggle Function
+// Mobile Menu Toggle Function - Enhanced and Fixed
 function setupMobileMenu() {
   try {
-    const navToggle = document.getElementById('nav-toggle')
-    const navMenu = document.getElementById('nav-menu')
+    // Wait for elements to be ready
+    setTimeout(() => {
+      const navToggle = document.getElementById('nav-toggle')
+      const navMenu = document.getElementById('nav-menu')
+      
+      if (!navToggle || !navMenu) {
+        console.warn('Mobile menu elements not found, retrying...')
+        // Retry after another small delay
+        setTimeout(() => {
+          const retryToggle = document.getElementById('nav-toggle')
+          const retryMenu = document.getElementById('nav-menu')
+          if (retryToggle && retryMenu) {
+            initializeMobileMenu(retryToggle, retryMenu)
+          }
+        }, 500)
+        return
+      }
+      
+      initializeMobileMenu(navToggle, navMenu)
+    }, 100)
     
-    if (!navToggle || !navMenu) {
-      console.warn('Mobile menu elements not found')
-      return
-    }
-    
-    // Ensure elements are properly set up
+  } catch (error) {
+    console.error('Error setting up mobile menu:', error)
+  }
+}
+
+// Initialize mobile menu functionality
+function initializeMobileMenu(navToggle, navMenu) {
+  try {
+    // Reset initial state
     navToggle.setAttribute('aria-expanded', 'false')
     navMenu.classList.remove('active')
     navToggle.classList.remove('active')
+    document.body.style.overflow = ''
+    
+    // Remove any existing event listeners
+    const newNavToggle = navToggle.cloneNode(true)
+    navToggle.parentNode.replaceChild(newNavToggle, navToggle)
+    
+    // Re-get the element reference after cloning
+    const freshNavToggle = document.getElementById('nav-toggle')
     
     // Toggle menu function
-    function toggleMenu() {
+    function toggleMenu(e) {
+      if (e) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+      
       const isActive = navMenu.classList.contains('active')
-      navMenu.classList.toggle('active')
-      navToggle.classList.toggle('active')
       
-      // Update aria-expanded for accessibility
-      navToggle.setAttribute('aria-expanded', !isActive)
-      
-      // Prevent body scroll when menu is open
-      if (!isActive) {
-        document.body.style.overflow = 'hidden'
-      } else {
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active')
+        freshNavToggle.classList.remove('active')
+        freshNavToggle.setAttribute('aria-expanded', 'false')
         document.body.style.overflow = ''
+      } else {
+        // Open menu
+        navMenu.classList.add('active')
+        freshNavToggle.classList.add('active')
+        freshNavToggle.setAttribute('aria-expanded', 'true')
+        document.body.style.overflow = 'hidden'
       }
     }
     
-    // Handle click events with proper event handling
-    navToggle.addEventListener('click', (e) => {
-      e.preventDefault()
-      e.stopPropagation()
-      toggleMenu()
-    }, { passive: false })
+    // Add click event listener
+    freshNavToggle.addEventListener('click', toggleMenu, { passive: false })
     
-    // Handle touch events for mobile
-    navToggle.addEventListener('touchend', (e) => {
+    // Add touch event listener for mobile devices
+    freshNavToggle.addEventListener('touchstart', (e) => {
       e.preventDefault()
-      e.stopPropagation()
-      toggleMenu()
+      toggleMenu(e)
     }, { passive: false })
     
     // Handle keyboard events for accessibility
-    navToggle.addEventListener('keydown', (e) => {
+    freshNavToggle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault()
-        e.stopPropagation()
-        toggleMenu()
+        toggleMenu(e)
       }
     })
     
@@ -1234,19 +1263,19 @@ function setupMobileMenu() {
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active')
-        navToggle.classList.remove('active')
-        navToggle.setAttribute('aria-expanded', 'false')
+        freshNavToggle.classList.remove('active')
+        freshNavToggle.setAttribute('aria-expanded', 'false')
         document.body.style.overflow = ''
       })
     })
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+      if (!freshNavToggle.contains(e.target) && !navMenu.contains(e.target)) {
         if (navMenu.classList.contains('active')) {
           navMenu.classList.remove('active')
-          navToggle.classList.remove('active')
-          navToggle.setAttribute('aria-expanded', 'false')
+          freshNavToggle.classList.remove('active')
+          freshNavToggle.setAttribute('aria-expanded', 'false')
           document.body.style.overflow = ''
         }
       }
@@ -1256,10 +1285,10 @@ function setupMobileMenu() {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active')
-        navToggle.classList.remove('active')
-        navToggle.setAttribute('aria-expanded', 'false')
+        freshNavToggle.classList.remove('active')
+        freshNavToggle.setAttribute('aria-expanded', 'false')
         document.body.style.overflow = ''
-        navToggle.focus() // Return focus to toggle button
+        freshNavToggle.focus()
       }
     })
     
@@ -1267,14 +1296,16 @@ function setupMobileMenu() {
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active')
-        navToggle.classList.remove('active')
-        navToggle.setAttribute('aria-expanded', 'false')
+        freshNavToggle.classList.remove('active')
+        freshNavToggle.setAttribute('aria-expanded', 'false')
         document.body.style.overflow = ''
       }
     })
     
+    console.log('Mobile menu initialized successfully')
+    
   } catch (error) {
-    console.error('Error setting up mobile menu:', error)
+    console.error('Error initializing mobile menu:', error)
   }
 }
 
