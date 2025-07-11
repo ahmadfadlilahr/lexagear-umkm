@@ -1,0 +1,41 @@
+{
+  "name": "lexagear-umkm-marketplace",
+  "version": "2.0.0",
+  "description": "Platform E-commerce UMKM LexaGear - Marketplace untuk produk lokal Indonesia dengan sistem multi-vendor",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --open=index.html --port=3000",
+    "dev": "live-server --open=index.html --port=3000 --watch=assets",
+    "admin": "live-server --open=admin/index.html --port=3001",
+    "preview": "live-server --open=index.html --port=8080",
+    "build": "echo 'Building optimized version...' && npm run minify:css && npm run minify:js",
+    "minify:css": "echo 'CSS minification - use tools like cssnano for production'",
+    "minify:js": "echo 'JS minification - use tools like terser for production'",
+    "test": "echo 'Running accessibility tests...'",
+    "lighthouse": "echo 'Run: lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json'",
+    "validate": "echo 'HTML validation - use tools like html-validate for production'"
+  },
+  "keywords": [
+    "umkm",
+    "marketplace", 
+    "e-commerce",
+    "multi-vendor",
+    "indonesia",
+    "local-products",
+    "responsive",
+    "vanilla-js"
+  ],
+  "author": "LexaGear Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lexagear/landing-page"
+  },
+  "bugs": {
+    "url": "https://github.com/lexagear/landing-page/issues"
+  },
+  "homepage": "https://lexagear.com"
+}

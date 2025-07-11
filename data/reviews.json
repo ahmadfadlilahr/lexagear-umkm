@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "productId": 1,
+    "userId": 101,
+    "vendorId": 1,
+    "userName": "Ahmad Rizki",
+    "rating": 5,
+    "comment": "Produk sangat bagus, sesuai dengan deskripsi. Pengiriman cepat dan packaging aman.",
+    "date": "2024-12-15",
+    "verified": true,
+    "helpful": 15,
+    "images": ["assets/images/reviews/review-1-1.jpg", "assets/images/reviews/review-1-2.jpg"]
+  },
+  {
+    "id": 2,
+    "productId": 1,
+    "userId": 102,
+    "vendorId": 1,
+    "userName": "Siti Nurhaliza",
+    "rating": 4,
+    "comment": "Kualitas kamera memang bagus seperti yang dijelaskan. Hanya saja baterai agak cepat habis untuk penggunaan gaming.",
+    "date": "2024-12-10",
+    "verified": true,
+    "helpful": 8,
+    "images": []
+  },
+  {
+    "id": 3,
+    "productId": 2,
+    "userId": 103,
+    "vendorId": 1,
+    "userName": "Dedi Kurniawan",
+    "rating": 5,
+    "comment": "Laptop gaming terbaik yang pernah saya beli. Performa sangat smooth untuk editing video dan gaming berat.",
+    "date": "2024-12-08",
+    "verified": true,
+    "helpful": 22,
+    "images": ["assets/images/reviews/review-2-1.jpg"]
+  },
+  {
+    "id": 4,
+    "productId": 3,
+    "userId": 104,
+    "vendorId": 2,
+    "userName": "Lisa Permata",
+    "rating": 5,
+    "comment": "Earbuds dengan kualitas suara yang luar biasa. Noise cancellation bekerja dengan baik. Produk lokal yang membanggakan!",
+    "date": "2024-12-05",
+    "verified": true,
+    "helpful": 12,
+    "images": []
+  },
+  {
+    "id": 5,
+    "productId": 4,
+    "userId": 105,
+    "vendorId": 1,
+    "userName": "Budi Santoso",
+    "rating": 4,
+    "comment": "Smartphone dengan value terbaik di kelasnya. Cocok untuk penggunaan sehari-hari.",
+    "date": "2024-12-03",
+    "verified": true,
+    "helpful": 6,
+    "images": ["assets/images/reviews/review-4-1.jpg"]
+  }
+]

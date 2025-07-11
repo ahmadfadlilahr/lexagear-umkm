@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "LexaGear Official",
+    "description": "Toko resmi LexaGear dengan produk elektronik premium",
+    "brandStory": "LexaGear didirikan pada tahun 2020 dengan visi menjadi platform teknologi terdepan di Indonesia. Kami berkomitmen menghadirkan produk-produk inovatif yang memenuhi kebutuhan digital masyarakat modern.",
+    "owner": "PT. LexaGear Indonesia",
+    "location": "Jakarta Selatan",
+    "established": "2020",
+    "rating": 4.8,
+    "totalReviews": 1250,
+    "image": "assets/images/vendors/lexagear-official.jpg",
+    "isLocal": true,
+    "verified": true,
+    "totalProducts": 15,
+    "totalSales": 5000
+  },
+  {
+    "id": 2,
+    "name": "Tekno Nusantara",
+    "description": "UMKM lokal spesialis aksesoris elektronik handmade",
+    "brandStory": "Tekno Nusantara adalah usaha keluarga yang dimulai dari hobi membuat case handphone custom. Kini kami telah berkembang menjadi produsen aksesoris elektronik berkualitas dengan sentuhan budaya lokal.",
+    "owner": "Budi Santoso",
+    "location": "Yogyakarta",
+    "established": "2018",
+    "rating": 4.6,
+    "totalReviews": 850,
+    "image": "assets/images/vendors/tekno-nusantara.jpg",
+    "isLocal": true,
+    "verified": true,
+    "totalProducts": 25,
+    "totalSales": 2500
+  },
+  {
+    "id": 3,
+    "name": "Gadget Lokal",
+    "description": "Produk teknologi buatan dalam negeri dengan kualitas internasional",
+    "brandStory": "Gadget Lokal lahir dari semangat untuk membuktikan bahwa produk Indonesia bisa bersaing di pasar global. Kami fokus pada inovasi dan kualitas yang tidak kalah dengan brand internasional.",
+    "owner": "Sari Teknologi",
+    "location": "Bandung",
+    "established": "2019",
+    "rating": 4.7,
+    "totalReviews": 960,
+    "image": "assets/images/vendors/gadget-lokal.jpg",
+    "isLocal": true,
+    "verified": true,
+    "totalProducts": 18,
+    "totalSales": 3200
+  }
+]

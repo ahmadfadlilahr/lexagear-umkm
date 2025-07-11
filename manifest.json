@@ -1,0 +1,25 @@
+{
+  "name": "LexaGear - Toko Elektronik Premium",
+  "short_name": "LexaGear",
+  "description": "Temukan koleksi produk elektronik terdepan dengan kualitas premium dan teknologi terkini",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3498db",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["shopping", "business"],
+  "lang": "id",
+  "dir": "ltr"
+}

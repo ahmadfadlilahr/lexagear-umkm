@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LexaGear UMKM Marketplace - Platform e-commerce untuk UMKM Indonesia. Jual beli produk lokal berkualitas dengan sistem multi-vendor, chat seller-buyer, dan fitur marketplace lengkap.">
+    <meta name="keywords" content="marketplace, umkm, e-commerce, produk lokal, multi-vendor, indonesia, jual beli online, chat seller, rating review">
+    <meta name="author" content="LexaGear UMKM Team">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="LexaGear UMKM Marketplace - Platform E-commerce untuk UMKM Indonesia">
+    <meta property="og:description" content="Temukan dan beli produk UMKM lokal terbaik Indonesia. Platform marketplace dengan fitur lengkap untuk mendukung ekonomi digital UMKM.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:url" content="https://lexagear-umkm.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LexaGear UMKM Marketplace">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LexaGear UMKM Marketplace - Platform E-commerce untuk UMKM Indonesia">
+    <meta name="twitter:description" content="Temukan dan beli produk UMKM lokal terbaik Indonesia. Platform marketplace dengan fitur lengkap.">
+    <meta name="twitter:image" content="assets/images/og-image.jpg">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2ecc71">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="LexaGear UMKM">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    
+    <title>LexaGear UMKM Marketplace - Platform E-commerce untuk UMKM Indonesia</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/script.js" as="script">
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Critical CSS will be inlined here for production */
+        *,*::before,*::after{box-sizing:border-box}*{margin:0;padding:0}body{font-family:"Poppins",sans-serif;line-height:1.6;color:#2c3e50;background:#fff}.header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);position:fixed;top:0;width:100%;z-index:1000}.navbar{padding:1rem 0}.nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}.nav-logo h2{color:#3498db;font-weight:700;font-size:1.8rem}.nav-menu{display:flex;list-style:none;gap:2rem}.nav-link{text-decoration:none;color:#2c3e50;font-weight:500}.hero{padding:120px 0 80px;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%)}.hero-container{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.hero-title{font-size:3rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;line-height:1.2}.cta-button{background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;padding:15px 30px;border:0;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer}@media (max-width:767px){.hero-container{grid-template-columns:1fr;text-align:center}.hero-title{font-size:2rem}}
+    </style>
+    
+    <!-- Load Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "LexaGear UMKM Marketplace",
+      "description": "Platform e-commerce untuk UMKM Indonesia dengan sistem multi-vendor",
+      "url": "https://lexagear-umkm.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://lexagear-umkm.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "LexaGear UMKM",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://lexagear-umkm.com/assets/images/logo.png"
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-links">Skip to main content</a>
+    
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+    
+    <!-- Header & Navbar -->
+    <header class="header" id="header">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>LexaGear UMKM</h2>
+                    <span class="marketplace-badge">Marketplace</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="#beranda" class="nav-link">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#produk" class="nav-link">Produk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#vendor" class="nav-link">Vendor UMKM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tentang" class="nav-link">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#kontak" class="nav-link">Kontak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="openCart()">🛒 Keranjang (<span id="cart-count">0</span>)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/index.html" class="nav-link admin-login" target="_blank">👨‍💼 Admin</a>
+                    </li>
+                </ul>
+                <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Marketplace UMKM Indonesia Terpercaya</h1>
+                <p class="hero-subtitle">Temukan dan beli produk UMKM lokal terbaik Indonesia. Platform marketplace dengan fitur lengkap untuk mendukung ekonomi digital UMKM.</p>
+                <div class="hero-buttons">
+                    <button class="cta-button primary" onclick="scrollToSection('produk')">Lihat Produk Lokal</button>
+                    <button class="cta-button secondary" onclick="scrollToSection('vendor')">Jelajahi Vendor UMKM</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/products/Laptop/pexels-morningtrain-18105.jpg" alt="LexaGear - Koleksi produk teknologi terdepan untuk kebutuhan digital Anda" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+    <!-- Product Catalog Section -->
+    <section class="products" id="produk">
+        <div class="container">
+            <h2 class="section-title">Katalog Produk Kami</h2>
+            
+            <!-- Search Input -->
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="Cari produk..." aria-label="Search products">
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons" role="group" aria-label="Product filters">
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">Semua</button>
+                <button class="filter-btn" data-filter="smartphone" aria-pressed="false">Smartphone</button>
+                <button class="filter-btn" data-filter="laptop" aria-pressed="false">Laptop</button>
+                <button class="filter-btn" data-filter="aksesoris" aria-pressed="false">Aksesoris</button>
+                <button class="filter-btn local-filter" data-filter="local" aria-pressed="false">🇮🇩 Produk Lokal</button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loading-state" style="display: none;">
+                <div class="loading-spinner" aria-label="Loading products"></div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-grid" role="region" aria-label="Product catalog">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+            
+            <!-- Error State -->
+            <div class="error-state" id="error-state" style="display: none;">
+                <h3>Oops! Terjadi kesalahan</h3>
+                <p>Tidak dapat memuat produk. Silakan coba lagi.</p>
+                <button class="retry-btn" onclick="retryLoadProducts()">Coba Lagi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured" id="fitur">
+        <div class="container">
+            <h2 class="section-title">Fitur Marketplace UMKM</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <div class="featured-icon">🏪</div>
+                    <h3>Multi-Vendor System</h3>
+                    <p>Platform marketplace yang memungkinkan banyak vendor UMKM untuk berjualan dalam satu tempat.</p>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-icon">🇮🇩</div>
+                    <h3>Produk Lokal Indonesia</h3>
+                    <p>Khusus menampilkan produk-produk UMKM lokal berkualitas dari seluruh Indonesia.</p>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-icon">💬</div>
+                    <h3>Chat Seller-Buyer</h3>
+                    <p>Fitur chat langsung antara pembeli dan penjual untuk komunikasi yang lebih mudah.</p>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-icon">⭐</div>
+                    <h3>Sistem Rating & Review</h3>
+                    <p>Sistem penilaian dan ulasan yang membantu pembeli memilih produk terbaik.</p>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-icon">🛒</div>
+                    <h3>Shopping Cart Lengkap</h3>
+                    <p>Keranjang belanja dengan fitur checkout yang mudah dan aman.</p>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-icon">💳</div>
+                    <h3>Payment Gateway</h3>
+                    <p>Integrasi dengan berbagai metode pembayaran untuk kemudahan transaksi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vendor Showcase Section -->
+    <section class="vendor-showcase" id="vendor">
+        <div class="container">
+            <h2 class="section-title">Vendor UMKM Terpercaya</h2>
+            <p class="section-subtitle">Temukan produk berkualitas dari vendor lokal terbaik</p>
+            
+            <div class="vendor-grid" id="vendor-grid">
+                <!-- Vendors will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontak">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <strong>Alamat:</strong>
+                        <p>Jl. Teknologi Raya No. 123<br>Jakarta Selatan, DKI Jakarta 12345</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <p>
+                            <span id="contact-email">info@lexagear.com</span>
+                            <button class="copy-btn" onclick="copyEmail()" aria-label="Copy email address" title="Copy email">
+                                📋
+                            </button>
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Telepon:</strong>
+                        <p>+62 21 1234 5678</p>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required aria-describedby="name-error">
+                        <span class="error-message" id="name-error" role="alert"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" placeholder="nama@email.com" required aria-describedby="email-error">
+                        <span class="error-message" id="email-error" role="alert"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Pesan</label>
+                        <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini..." rows="5" maxlength="500" required aria-describedby="message-error"></textarea>
+                        <span class="error-message" id="message-error" role="alert"></span>
+                    </div>
+                    
+                    <!-- Info box dengan instruksi yang lebih jelas -->
+                    <div class="email-info" style="background: linear-gradient(135deg, #e8f5e8 0%, #d4f1d4 100%); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid #27ae60; box-shadow: 0 2px 8px rgba(39, 174, 96, 0.1);">
+                        <div style="display: flex; align-items: flex-start; gap: 0.8rem;">
+                            <span style="font-size: 1.5rem; margin-top: 0.1rem;">📧</span>
+                            <div>
+                                <h4 style="margin: 0 0 0.5rem 0; color: #2c3e50; font-size: 1rem; font-weight: 600;">Cara Mengirim Pesan</h4>
+                                <p style="margin: 0 0 0.5rem 0; color: #2c3e50; font-size: 0.9rem; line-height: 1.5;">
+                                    Setelah mengisi form dan klik <strong>"Kirim Pesan"</strong>, Anda akan otomatis diarahkan ke <strong>Gmail</strong> dengan pesan yang sudah terisi.
+                                </p>
+                                <p style="margin: 0; color: #555; font-size: 0.85rem; font-style: italic;">
+                                    ✅ Tinggal klik tombol "Send" di Gmail untuk mengirim pesan Anda!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 12px 24px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);">
+                        <span class="btn-text">📧 Kirim Pesan via Gmail</span>
+                        <span class="btn-loading" style="display: none;">⏳ Menyiapkan...</span>
+                    </button>
+                    
+                    <div class="success-message" id="success-message" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); color: #155724; padding: 15px; border-radius: 10px; margin-top: 1rem; display: none; text-align: center; border-left: 4px solid #28a745; box-shadow: 0 2px 8px rgba(40, 167, 69, 0.1);">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">✅</span>
+                            <span style="font-weight: 600;">Gmail berhasil dibuka! Silakan klik "Send" untuk mengirim pesan Anda.</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Product Comparison Container -->
+    <div class="compare-container" id="compare-container" style="display: none;">
+        <div class="compare-header">
+            <h4>Bandingkan Produk</h4>
+            <button class="compare-close" onclick="closeCompare()" aria-label="Close comparison">&times;</button>
+        </div>
+        <div class="compare-items" id="compare-items">
+            <!-- Comparison items will be added here -->
+        </div>
+        <button class="compare-btn" onclick="showComparison()">Bandingkan</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>LexaGear</h3>
+                    <p>© 2025 LexaGear. Seluruh Hak Cipta Dilindungi.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="modal" id="product-modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-img" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <p class="modal-price" id="modal-price"></p>
+                    <p class="modal-description" id="modal-description"></p>
+                    <div class="modal-specs" id="modal-specs"></div>
+                    <div class="modal-actions">
+                        <button id="add-to-cart-btn" class="add-to-cart-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="m1 1 4 4 1.68 8.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            Tambah ke Keranjang
+                        </button>
+                        <div class="quantity-selector" style="margin-top: 1rem;">
+                            <label for="product-quantity" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Jumlah:</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <button type="button" onclick="changeQuantity(-1)" style="width: 40px; height: 40px; border: 1px solid #ddd; background: white; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer;">-</button>
+                                <input type="number" id="product-quantity" value="1" min="1" max="10" style="width: 60px; text-align: center; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                                <button type="button" onclick="changeQuantity(1)" style="width: 40px; height: 40px; border: 1px solid #ddd; background: white; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer;">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal" id="cart-modal" role="dialog" aria-labelledby="cart-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="cart-title">Keranjang Belanja</h2>
+                <button class="close-btn" onclick="closeCart()" aria-label="Close cart">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total: </span>
+                        <span id="cart-total">Rp 0</span>
+                    </div>
+                    <button class="btn btn-primary checkout-btn" onclick="checkout()">
+                        Lanjut ke Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal" role="dialog" aria-labelledby="checkout-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="checkout-title">Checkout</h2>
+                <button class="close-btn" onclick="closeCheckout()" aria-label="Close checkout">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="customer-name">Nama Lengkap:</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email:</label>
+                        <input type="email" id="customer-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Nomor Telepon:</label>
+                        <input type="tel" id="customer-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-address">Alamat Lengkap:</label>
+                        <textarea id="customer-address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Metode Pembayaran:</label>
+                        <select id="payment-method" required>
+                            <option value="">Pilih metode pembayaran</option>
+                            <option value="credit_card">Kartu Kredit</option>
+                            <option value="bank_transfer">Transfer Bank</option>
+                            <option value="ewallet">E-Wallet</option>
+                            <option value="cod">Bayar di Tempat</option>
+                        </select>
+                    </div>
+                    <div class="checkout-summary">
+                        <h3>Ringkasan Pesanan</h3>
+                        <div id="checkout-items"></div>
+                        <div class="total-amount">
+                            <strong>Total: <span id="checkout-total">Rp 0</span></strong>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Proses Pesanan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal" id="chat-modal" role="dialog" aria-labelledby="chat-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="chat-title">Chat dengan Vendor</h2>
+                <button class="close-btn" onclick="closeChat()" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Chat messages will be loaded here -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-message-input" placeholder="Ketik pesan...">
+                        <button onclick="sendMessage()" class="btn btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal" id="review-modal" role="dialog" aria-labelledby="review-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="review-title">Tulis Review</h2>
+                <button class="close-btn" onclick="closeReview()" aria-label="Close review">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="review-form">
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <div class="star-rating" id="star-rating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-comment">Komentar:</label>
+                        <textarea id="review-comment" rows="4" placeholder="Bagikan pengalaman Anda..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirim Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal" id="chat-modal" role="dialog" aria-labelledby="chat-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="chat-title">Chat dengan Seller</h2>
+                <button class="close-btn" onclick="closeChat()" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Chat messages will be dynamically loaded here -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-input" placeholder="Ketik pesan Anda..." onkeypress="handleChatKeyPress(event)">
+                        <button onclick="sendMessage()">Kirim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor Detail Modal -->
+    <div class="modal" id="vendor-modal" role="dialog" aria-labelledby="vendor-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="vendor-title">Detail Vendor</h2>
+                <button class="close-btn" onclick="closeVendorModal()" aria-label="Close vendor detail">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="vendor-details">
+                    <!-- Vendor details will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Demo Modal -->
+    <div class="modal" id="payment-demo-modal" role="dialog" aria-labelledby="payment-demo-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="payment-demo-title">Demo Payment Gateway</h2>
+                <button class="close-btn" onclick="closePaymentDemo()" aria-label="Close payment demo">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="payment-demo">
+                    <h3>Simulasi Pembayaran</h3>
+                    <p>Ini adalah demo payment gateway. Tidak ada transaksi nyata yang terjadi.</p>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <h4>Kartu Kredit</h4>
+                            <div class="form-group">
+                                <input type="text" placeholder="Nomor Kartu" value="4111 1111 1111 1111">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="MM/YY" value="12/25">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="CVV" value="123">
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            <h4>Transfer Bank</h4>
+                            <p>Bank: BCA</p>
+                            <p>No. Rekening: 1234567890</p>
+                            <p>Atas Nama: LexaGear Marketplace</p>
+                        </div>
+                        <div class="payment-option">
+                            <h4>E-Wallet</h4>
+                            <p>GoPay, OVO, Dana, LinkAja</p>
+                            <p>Scan QR Code atau input nomor HP</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" onclick="processPayment()">Proses Pembayaran (Demo)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

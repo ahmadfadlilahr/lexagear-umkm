@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "conversationId": "conv_001",
+    "productId": 1,
+    "buyerId": 101,
+    "buyerName": "Ahmad Rizki",
+    "sellerId": 1,
+    "sellerName": "LexaGear Official",
+    "messages": [
+      {
+        "id": 1,
+        "senderId": 101,
+        "senderType": "buyer",
+        "message": "Apakah produk ini masih tersedia? Dan berapa lama pengiriman ke Jakarta?",
+        "timestamp": "2024-12-20T09:00:00Z",
+        "read": true
+      },
+      {
+        "id": 2,
+        "senderId": 1,
+        "senderType": "seller",
+        "message": "Halo, produk masih tersedia. Untuk pengiriman ke Jakarta estimasi 1-2 hari kerja. Terima kasih!",
+        "timestamp": "2024-12-20T09:15:00Z",
+        "read": true
+      },
+      {
+        "id": 3,
+        "senderId": 101,
+        "senderType": "buyer",
+        "message": "Baik, saya tertarik untuk membeli. Apakah ada garansi resmi?",
+        "timestamp": "2024-12-20T09:30:00Z",
+        "read": false
+      }
+    ],
+    "status": "active",
+    "lastMessage": "2024-12-20T09:30:00Z"
+  },
+  {
+    "id": 2,
+    "conversationId": "conv_002",
+    "productId": 3,
+    "buyerId": 102,
+    "buyerName": "Siti Nurhaliza",
+    "sellerId": 2,
+    "sellerName": "Tekno Nusantara",
+    "messages": [
+      {
+        "id": 1,
+        "senderId": 102,
+        "senderType": "buyer",
+        "message": "Produk lokal ini kualitasnya bagaimana ya? Apakah sudah teruji?",
+        "timestamp": "2024-12-20T10:00:00Z",
+        "read": true
+      },
+      {
+        "id": 2,
+        "senderId": 2,
+        "senderType": "seller",
+        "message": "Produk kami telah melalui quality control yang ketat dan memiliki sertifikat SNI. Kualitas setara dengan brand internasional.",
+        "timestamp": "2024-12-20T10:10:00Z",
+        "read": true
+      }
+    ],
+    "status": "active",
+    "lastMessage": "2024-12-20T10:10:00Z"
+  }
+]
